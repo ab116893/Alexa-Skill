@@ -6,7 +6,6 @@ Created on Mon Oct  9 20:03:14 2017
 """
 import urllib
 from bs4 import BeautifulSoup
-import json
 import urllib.request
         
 
@@ -17,17 +16,23 @@ def make_soup(url):
 soup = make_soup("https://www.unh.edu/dining/regular-hours-operation")
 
 
-    
-    #for hours in record.find_all("th"):
-   #hoursdata = ""
-mylist =[]
+   
 for record in soup.find_all("tr"):
-    list_of_hours=[]
+    #list_of_hours=[]
     for hour in record.find_all(["th","td"]):
-        getdata=record.text, hour.text
-        list_of_hours.append(getdata)
-    mylist.append(list_of_hours)
-print(mylist)
+        day = record.text
+        hour_list = "\n" + hour.text
+        dining = day , "\n", hour_list
+        
+        
+    
+    print(dining)
+    
+
+
+ #       list_of_hours.append(getdata)
+ #   mylist.append(list_of_hours)
+#print(mylist, "\n")
 
         
         
